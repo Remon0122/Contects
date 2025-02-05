@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="15dp"
     >
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="15dp"
         >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="?attr/colorPrimary"
-            android:padding="5dp"
+            android:padding="15dp"
             >
             <ImageView
                 android:id="@+id/delete"
@@ -28,72 +28,90 @@
                 android:padding="10dp"
                 />
 
-            <LinearLayout
-                android:id="@+id/Name"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/tvName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
+                app:layout_constraintWidth_percent=".8"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="5dp">
 
                 <TextView
+                    android:id="@+id/Name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ahamed Mahamod"
+                    android:text="@string/ahamed_mahamod"
                     android:textSize="30dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <LinearLayout
-                android:id="@+id/Email"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/tvEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/Name"
+                app:layout_constraintTop_toBottomOf="@+id/tvName"
                 app:layout_constraintBottom_toBottomOf="parent"
                 >
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/email"
-                    android:layout_marginEnd="10dp"
-
-                    />
                 <TextView
-                    android:id="@+id/Phone"
+                    android:id="@+id/Email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/primary"
                     android:text="Remon123youssf@gmail.com"
                     android:textSize="23dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/icon_email"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:paddingLeft="10dp"
+                    />
+                <ImageView
+                    android:id="@+id/icon_email"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/email"
+                    android:layout_marginEnd="10dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
 
-            </LinearLayout>
 
-            <LinearLayout
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/tvPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Email"
+                app:layout_constraintTop_toBottomOf="@+id/tvEmail"
                 android:layout_marginTop="20dp"
                 >
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="10dp"
-                    android:src="@drawable/phone_call"
-                    android:layout_marginTop="10dp"
-                    />
-
                 <TextView
+                    android:id="@+id/Phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/primary"
                     android:text="+201220770125"
                     android:textSize="40dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/icon_phone"
+                    android:paddingLeft="10dp"
+                    />
+
+                <ImageView
+                    android:id="@+id/icon_phone"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/phone_call"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
