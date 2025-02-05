@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Contects</string>
+    <string name="rout_logo">Rout Logo</string>
+    <string name="there_is_no_contacts_added_here">There is No Contacts Added Here</string>
+    <string name="add_contact">add_contact</string>
+    <string name="name">Enter User Name</string>
+    <string name="email">Enter User Email</string>
+    <string name="Phone">Enter User Phone</string>
+    <string name="Bottom_Add_Contact">Enter User</string>
+</resources>
