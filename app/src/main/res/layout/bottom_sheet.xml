@@ -19,7 +19,6 @@
         app:endIconMode="clear_text"
         app:layout_constraintTop_toTopOf="parent"
         android:padding="5dp"
-        android:background="@drawable/shape"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -42,7 +41,6 @@
         android:textColorHint="@color/primary"
         app:endIconMode="clear_text"
         app:layout_constraintTop_toBottomOf="@+id/nam_til"
-        android:background="@drawable/shape"
         android:layout_marginTop="10dp"
         >
 
@@ -66,7 +64,6 @@
         android:textColorHint="@color/primary"
         app:endIconMode="clear_text"
         app:layout_constraintTop_toBottomOf="@+id/email_til"
-        android:background="@drawable/shape"
         android:layout_marginTop="10dp"
         >
 

@@ -39,10 +39,10 @@ class ActivityContact : AppCompatActivity() {
                 if (!validateTextField(bottomSheetBinding)){
                     return@setOnClickListener
                 }
-            }
             val contact = Contact(name,email,phone)
             adapter.addContact(contact)
             updateUIState()
+            }
         }
     }
     private fun validateTextField(binding: BottomSheetBinding): Boolean {
@@ -85,6 +85,6 @@ class ActivityContact : AppCompatActivity() {
 
     private fun updateUIForStates() {
         binding.rvContact.isVisible = false
-        binding.emptyView.isVisible = false
+        binding.emptyView.isVisible = true
     }
 }
