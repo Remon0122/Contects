@@ -24,7 +24,7 @@
             android:src="@drawable/app_name" />
     </androidx.appcompat.widget.Toolbar>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcContact"
+        android:id="@+id/rvContact"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp"
@@ -33,7 +33,7 @@
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="2"
         tools:listitem="@layout/item_contact"
-        android:visibility="gone"
+        android:visibility="visible"
         />
         <LinearLayout
             android:id="@+id/empty_view"

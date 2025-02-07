@@ -1,38 +1,58 @@
 package com.example.contects.activities.contacts
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.contects.databinding.ItemContactBinding
 import com.example.contects.model.Contact
 
-class ContactAdapter(val ContactList : List<Contact>): RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
+class ContactAdapter : RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
 
-    class ContactViewHolder(val binding : ItemContactBinding):
-        RecyclerView.ViewHolder(binding.root)
+    private var contactList = mutableListOf<Contact>()
+    var onClickDelete: ((Int) -> Unit)? = null
+
+    class ContactViewHolder(val binding: ItemContactBinding) : RecyclerView.ViewHolder(binding.root)
+
+    fun deleteContact(position: Int) {
+        if (position >= 0 && position < contactList.size) {
+            contactList.removeAt(position)
+            notifyItemRemoved(position)
+        }
+    }
+
+    fun addContact(contact: Contact){
+        contactList.add(contact)
+        notifyItemInserted(contactList.size-1)
+    }
+
+    fun isEmpty() = contactList.isEmpty()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
-        val ViewBinding = ItemContactBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
-        )
-        return ContactViewHolder(ViewBinding)
+        val binding = ItemContactBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ContactViewHolder(binding)
     }
 
-    override fun getItemCount(): Int {
-        return ContactList.size
-    }
+    override fun getItemCount(): Int = contactList.size
 
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
-        val contact = ContactList[position]
+        val contact = contactList[position]
 
         holder.binding.Name.text = contact.name
         holder.binding.Phone.text = contact.number
         holder.binding.Email.text = contact.email
 
-        holder.binding.delete.setOnClickListener{
-            
+        holder.binding.delete.setOnClickListener {
+            onClickDelete?.invoke(position)
         }
     }
 
+    fun setContactList(list: List<Contact>) {
+        contactList.clear()
+        contactList.addAll(list)
+        notifyDataSetChanged()
+    }
 }
+
+
+
