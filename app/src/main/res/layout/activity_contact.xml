@@ -32,8 +32,8 @@
         android:layout_marginTop="?android:attr/actionBarSize"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="2"
-        tools:listitem="@layout/item_contact"
         android:visibility="visible"
+        tools:listitem="@layout/item_contact"
         />
         <LinearLayout
             android:id="@+id/empty_view"

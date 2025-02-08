@@ -38,11 +38,11 @@ class ContactAdapter : RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() 
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
         val contact = contactList[position]
 
-        holder.binding.Name.text = contact.name
-        holder.binding.Phone.text = contact.number
-        holder.binding.Email.text = contact.email
+        holder.binding.tvName.text = contact.name
+        holder.binding.tvEmail.text = contact.number
+        holder.binding.tvNumber.text = contact.email
 
-        holder.binding.delete.setOnClickListener {
+        holder.binding.ivDelete.setOnClickListener {
             onClickDelete?.invoke(position)
         }
     }

@@ -13,8 +13,9 @@ import com.example.contects.activities.utils.ValidationUtils.validatePhone
 
 class ActivityContact : AppCompatActivity() {
     lateinit var binding: ActivityContactBinding
-    private val ContactList = mutableListOf<Contact>()
+    private val contactList = mutableListOf<Contact>()
     private val adapter = ContactAdapter()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityContactBinding.inflate(layoutInflater)
@@ -24,27 +25,30 @@ class ActivityContact : AppCompatActivity() {
         onAddContactClick()
     }
 
-
-
     private fun onAddContactClick() {
-        binding.fabAddContact.setOnClickListener{
+        binding.fabAddContact.setOnClickListener {
             val bottomSheetDialog = BottomSheetDialog(this)
             val bottomSheetBinding = BottomSheetBinding.inflate(layoutInflater)
             bottomSheetDialog.setContentView(bottomSheetBinding.root)
-            val name = bottomSheetBinding.nameEdit.text?.trim().toString()
-            val email = bottomSheetBinding.emailEdit.text?.trim().toString()
-            val phone = bottomSheetBinding.PhoneEdit.text?.trim().toString()
+
             bottomSheetDialog.show()
-            bottomSheetBinding.btnAddContact.setOnClickListener{
-                if (!validateTextField(bottomSheetBinding)){
+
+            bottomSheetBinding.btnAddContact.setOnClickListener {
+                val name = bottomSheetBinding.nameEdit.text?.trim().toString()
+                val email = bottomSheetBinding.emailEdit.text?.trim().toString()
+                val phone = bottomSheetBinding.PhoneEdit.text?.trim().toString()
+
+                if (!validateTextField(bottomSheetBinding)) {
                     return@setOnClickListener
                 }
-            val contact = Contact(name,email,phone)
-            adapter.addContact(contact)
-            updateUIState()
+                val contact = Contact(name, email, phone)
+                adapter.addContact(contact)
+                updateUIState()
+                bottomSheetDialog.dismiss()
             }
         }
     }
+
     private fun validateTextField(binding: BottomSheetBinding): Boolean {
         val name = binding.nameEdit.text?.trim().toString()
         val email = binding.emailEdit.text?.trim().toString()
@@ -63,27 +67,27 @@ class ActivityContact : AppCompatActivity() {
 
     private fun initContactRv() {
         binding.rvContact.adapter = adapter
-        adapter.setContactList(ContactList)
-        adapter.onClickDelete = { Position->
-            adapter.deleteContact(Position)
+        adapter.setContactList(contactList)
+        adapter.onClickDelete = { position ->
+            adapter.deleteContact(position)
             updateUIState()
         }
     }
 
     private fun updateUIState() {
-        if (adapter.isEmpty()){
-            updateUIForStates()
-        }else{
-            updateUIForSuccess()
+        if (adapter.isEmpty()) {
+            updateUIForEmptyState()
+        } else {
+            updateUIForSuccessState()
         }
     }
 
-    private fun updateUIForSuccess() {
+    private fun updateUIForSuccessState() {
         binding.rvContact.isVisible = true
         binding.emptyView.isVisible = false
     }
 
-    private fun updateUIForStates() {
+    private fun updateUIForEmptyState() {
         binding.rvContact.isVisible = false
         binding.emptyView.isVisible = true
     }
