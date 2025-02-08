@@ -34,6 +34,7 @@ class ActivityContact : AppCompatActivity() {
             bottomSheetDialog.show()
 
             bottomSheetBinding.btnAddContact.setOnClickListener {
+                // Get the input values after the dialog is shown
                 val name = bottomSheetBinding.nameEdit.text?.trim().toString()
                 val email = bottomSheetBinding.emailEdit.text?.trim().toString()
                 val phone = bottomSheetBinding.PhoneEdit.text?.trim().toString()
@@ -41,9 +42,12 @@ class ActivityContact : AppCompatActivity() {
                 if (!validateTextField(bottomSheetBinding)) {
                     return@setOnClickListener
                 }
+
                 val contact = Contact(name, email, phone)
                 adapter.addContact(contact)
                 updateUIState()
+
+                // Close the dialog after adding the contact
                 bottomSheetDialog.dismiss()
             }
         }
